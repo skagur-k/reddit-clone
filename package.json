@@ -6,9 +6,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "global": "^4.4.0",
     "next": "latest",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "next-auth": "^4.3.4",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
     "@types/node": "17.0.4",

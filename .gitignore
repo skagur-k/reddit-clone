@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# stepzen
+/stepzen/node_modules
+
 # testing
 /coverage
 
