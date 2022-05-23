@@ -7,6 +7,7 @@ import { useMutation } from '@apollo/client'
 import { ADD_POST, ADD_SUBREDDIT } from '../graphql/mutations'
 import { GET_SUBREDDIT_BY_TOPIC } from '../graphql/queries'
 import client from '../apollo-client'
+import { toast } from 'react-hot-toast'
 
 type FormData = {
     postTitle: string
@@ -30,21 +31,19 @@ function PostBox() {
     } = useForm<FormData>()
 
     const onSubmit = handleSubmit(async (formData) => {
-        console.log(formData)
-
+        const notification = toast.loading('Creating New Post 🚀')
         try {
             // query subreddit topic
-            const {
-                data: { getSubredditListByTopic },
-            } = await client.query({
+            const { data } = await client.query({
                 query: GET_SUBREDDIT_BY_TOPIC,
                 variables: {
                     topic: formData.subreddit,
                 },
             })
 
-            const subredditExists = getSubredditListByTopic.length > 0
-
+            // TODO: Why does this return array length of 0?
+            const subredditExists = data.getSubredditListByTopic.length > 0
+            console.log(data)
             if (!subredditExists) {
                 // create subreddit
                 console.log('Subreddit is new! ===> Creating new subreddit')
@@ -64,7 +63,7 @@ function PostBox() {
                 } = await addPost({
                     variables: {
                         body: formData.postBody,
-                        iamge: image,
+                        image: image,
                         subreddit_id: newSubreddit.id,
                         title: formData.postTitle,
                         username: session?.user?.name,
@@ -74,7 +73,7 @@ function PostBox() {
                 console.log('New Post added: ', newPost)
             } else {
                 // use existing subreddit
-                console.log(subredditExists)
+                console.log('Using existing subreddit')
                 const image = formData.postImage || ''
 
                 const {
@@ -90,7 +89,22 @@ function PostBox() {
                 })
                 console.log('New Post added: ', newPost)
             }
-        } catch (error) {}
+
+            // Reset form values
+
+            setValue('postBody', '')
+            setValue('postTitle', '')
+            setValue('postImage', '')
+            setValue('subreddit', '')
+            toast.success('New Post Created!', {
+                id: notification,
+            })
+        } catch (error) {
+            console.error(error)
+            toast.error('Something went wrong!', {
+                id: notification,
+            })
+        }
     })
 
     return (

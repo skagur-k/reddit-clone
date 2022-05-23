@@ -4,20 +4,20 @@ export const ADD_POST = gql`
     mutation Mutation(
         $body: String!
         $image: String!
-        $subrredit_id: ID!
+        $subreddit_id: ID!
         $title: String!
         $username: String!
     ) {
         insertPost(
             body: $body
             image: $image
-            subreddit_id: $subrredit_id
+            subreddit_id: $subreddit_id
             title: $title
             username: $username
         ) {
             body
             created_at
-            IDimage
+            image
             subreddit_id
             title
             username
