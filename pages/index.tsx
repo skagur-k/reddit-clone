@@ -29,17 +29,18 @@ const Home: NextPage = () => {
             <PostBox />
             {/* Feed */}
 
-            <div className="flex">
+            <div className="flex justify-between space-x-4">
                 {posts?.length > 0 && <Feed />}
 
                 {subreddits?.length > 0 && (
-                    <div className="sticky top-40 mx-5 mt-5 hidden h-fit min-w-[300px] rounded-md border border-gray-300 bg-white lg:inline">
+                    <div className="sticky top-40 mt-5 hidden h-fit min-w-[300px] rounded-md border border-gray-300 bg-white lg:inline">
                         <p className="text-md mb-1 p-4 pb-3 font-bold">
                             Top Communities
                         </p>
                         <div>
                             {subreddits?.map((subreddit, index) => (
                                 <SubredditRow
+                                    key={subreddit.id}
                                     index={index}
                                     topic={subreddit.topic}
                                 />

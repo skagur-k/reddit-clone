@@ -41,7 +41,6 @@ function Post({ post }: Props) {
             (vote) => vote.username == session?.user?.name
         )?.upvote
 
-        console.log(vote)
         setVote(vote)
         return () => {}
     }, [data])
@@ -56,7 +55,6 @@ function Post({ post }: Props) {
         if (vote === false && !isUpvote) return
 
         const notification = toast.loading('Voting')
-        console.log('Voting')
 
         await addVote({
             variables: {
@@ -87,9 +85,9 @@ function Post({ post }: Props) {
 
     return (
         <Link href={`/post/${post.id}`}>
-            <div className="flex cursor-pointer rounded-md border border-gray-300 bg-white shadow-sm hover:border-gray-400">
+            <div className="flex cursor-pointer rounded-md border border-gray-300 bg-white shadow-sm    ">
                 {/* Votes */}
-                <div className="flex flex-col items-center justify-start space-y-1 rounded-l-md bg-gray-50 p-4 text-gray-400">
+                <div className="text-gray-4300 flex flex-col items-center justify-start space-y-1 rounded-l-md bg-gray-50 p-4">
                     <ArrowUpIcon
                         onClick={() => upVote(true)}
                         className={`voteButtons hover:text-blue-400 ${

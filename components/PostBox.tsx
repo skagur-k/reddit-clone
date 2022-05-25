@@ -48,6 +48,8 @@ function PostBox({ subreddit }: Props) {
                     topic: subreddit || formData.subreddit,
                 },
             })
+            console.log(getSubredditListByTopic)
+
             const subredditExists = getSubredditListByTopic.length > 0
             if (!subredditExists) {
                 // create subreddit
