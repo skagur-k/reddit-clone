@@ -49,6 +49,10 @@ function PostBox({ subreddit }: Props) {
                 },
             })
             console.log(getSubredditListByTopic)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 50eaa988cce46d915ac414cfd01121d405e4b0ae
             const subredditExists = getSubredditListByTopic.length > 0
             console.log(subredditExists)
             if (!subredditExists) {
