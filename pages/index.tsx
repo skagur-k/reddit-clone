@@ -37,19 +37,8 @@ const Home: NextPage = () => {
             <PostBox />
             {/* Feed */}
 
-<<<<<<< HEAD
-            <div className="flex justify-between">
-                {posts?.length > 0 ? (
-                    <Feed />
-                ) : (
-                    <div className="flex min-h-[300px] w-full items-center justify-center text-2xl font-bold">
-                        <h1>No Post Yet</h1>
-                    </div>
-                )}
-=======
             <div className="flex justify-between space-x-4">
                 {posts?.length > 0 && <Feed />}
->>>>>>> 50eaa988cce46d915ac414cfd01121d405e4b0ae
 
                 {subreddits?.length > 0 && (
                     <div className="sticky top-40 mt-5 hidden h-fit min-w-[300px] rounded-md border border-gray-300 bg-white lg:inline">

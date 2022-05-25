@@ -1,23 +1,29 @@
-# Next.js + Tailwind CSS Example
+# Reddit Clone App
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+Full Stack [Reddit](https://www.reddit.com/) **minimal** clone app built with [Next JS](https://nextjs.org/), [SupaBase](https://supabase.com/), [StepZen](https://stepzen.com/), [Apollo GraphQL](hhttps://www.apollographql.com/), [TypeScript](https://www.typescriptlang.org/), and [Tailwind CSS](https://tailwindcss.com/),
 
-## Deploy your own
+This project is hosted by & deployed at **Vercel**: [https://reddit-clone.skagur.dev](https://reddit-clone.skagur.dev)
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+## Frontend
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+-   Next JS
+-   TypeScript
+-   Tailwind CSS
 
-## How to use
+## Backend
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+-   Apollo GraphQL
+-   SupaBase Postgres
+-   StepZen
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-# or
-pnpm create next-app -- --example with-tailwindcss with-tailwindcss-app
-```
+# Features
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+-   **Next-Auth**: OAuth2 authentication via _GitHub_
+-   **Create** Posts, Subreddits and Comments
+-   **Upvote/Downvote** posts
+-   Homepage Feed
+-   Dynamically generated Subreddit & Post page
+-   Toasts with [react-hot-toast](https://react-hot-toast.com/)
+-   Icons from [@heroIcons](https://heroicons.com/)
+
+## Screenshots
