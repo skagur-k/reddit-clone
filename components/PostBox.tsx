@@ -48,7 +48,9 @@ function PostBox({ subreddit }: Props) {
                     topic: subreddit || formData.subreddit,
                 },
             })
+            console.log(getSubredditListByTopic)
             const subredditExists = getSubredditListByTopic.length > 0
+            console.log(subredditExists)
             if (!subredditExists) {
                 // create subreddit
                 console.log('Subreddit is new! ===> Creating new subreddit')

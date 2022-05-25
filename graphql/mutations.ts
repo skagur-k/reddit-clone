@@ -35,6 +35,17 @@ export const ADD_SUBREDDIT = gql`
     }
 `
 
+export const DELETE_POST_BY_POST_ID = gql`
+    mutation Mutation($post_id: ID!) {
+        insertSubreddit(post_id: $post_id) {
+            id
+            title
+            created_at
+            username
+        }
+    }
+`
+
 export const ADD_VOTE = gql`
     mutation Mutation($post_id: ID!, $username: String!, $upvote: Boolean!) {
         insertVote(post_id: $post_id, username: $username, upvote: $upvote) {

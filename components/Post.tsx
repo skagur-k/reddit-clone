@@ -7,6 +7,7 @@ import {
     DotsHorizontalIcon,
     GiftIcon,
     ShareIcon,
+    TrashIcon,
 } from '@heroicons/react/outline'
 import Avatar from './Avatar'
 import TimeAgo from 'react-timeago'
@@ -14,9 +15,12 @@ import Link from 'next/link'
 import { Jelly } from '@uiball/loaders'
 import { useSession } from 'next-auth/react'
 import toast from 'react-hot-toast'
-import { GET_ALL_VOTES_BY_POST_ID } from '../graphql/queries'
+import {
+    GET_ALL_VOTES_BY_POST_ID,
+    GET_POST_BY_POST_ID,
+} from '../graphql/queries'
 import { useMutation, useQuery } from '@apollo/client'
-import { ADD_VOTE } from '../graphql/mutations'
+import { ADD_VOTE, DELETE_POST_BY_POST_ID } from '../graphql/mutations'
 
 type Props = {
     post: Post
@@ -29,6 +33,13 @@ function Post({ post }: Props) {
         variables: {
             post_id: post?.id,
         },
+    })
+
+    const [handleDelete] = useMutation(DELETE_POST_BY_POST_ID, {
+        variables: {
+            post_id: post?.id,
+        },
+        refetchQueries: [GET_POST_BY_POST_ID, 'getPostByPostId'],
     })
 
     const [addVote] = useMutation(ADD_VOTE, {
@@ -150,6 +161,13 @@ function Post({ post }: Props) {
                         <div className="postButtons">
                             <BookmarkIcon className="h-6 w-6" />
                             <p className="hidden sm:inline">Save</p>
+                        </div>
+                        <div className="postButtons">
+                            <TrashIcon
+                                className="h-6 w-6"
+                                // onClick={() => handleDelete()}
+                            />
+                            <p className="hidden sm:inline">Delete</p>
                         </div>
                         <div className="postButtons">
                             <DotsHorizontalIcon className="h-6 w-6" />

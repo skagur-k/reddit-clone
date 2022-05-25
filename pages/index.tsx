@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client'
+import { Jelly } from '@uiball/loaders'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -20,6 +21,13 @@ const Home: NextPage = () => {
     const subreddits: Subreddit[] = subredditData?.getSubredditListLimit
     const posts: Post[] = postData?.getPostList
 
+    if (!posts)
+        return (
+            <div className="flex w-full items-center justify-center p-10 text-xl">
+                <Jelly size={50} color="#FF4501" />
+            </div>
+        )
+
     return (
         <div className="my-5 mx-auto max-w-5xl">
             <Head>
@@ -29,11 +37,17 @@ const Home: NextPage = () => {
             <PostBox />
             {/* Feed */}
 
-            <div className="flex">
-                {posts?.length > 0 && <Feed />}
+            <div className="flex justify-between">
+                {posts?.length > 0 ? (
+                    <Feed />
+                ) : (
+                    <div className="flex min-h-[300px] w-full items-center justify-center text-2xl font-bold">
+                        <h1>No Post Yet</h1>
+                    </div>
+                )}
 
                 {subreddits?.length > 0 && (
-                    <div className="sticky top-40 mx-5 mt-5 hidden h-fit min-w-[300px] rounded-md border border-gray-300 bg-white lg:inline">
+                    <div className="sticky top-40 mt-5 hidden h-fit min-w-[300px] rounded-md border border-gray-300 bg-white lg:inline">
                         <p className="text-md mb-1 p-4 pb-3 font-bold">
                             Top Communities
                         </p>
